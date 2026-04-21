@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool Library — Borrow Tools from Your Neighbors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E85D04;
+      --orange-light: #F48C06;
+      --blue-dark: #1B2B4B;
+      --blue-mid: #2D4A7A;
+      --blue-light: #EEF3FB;
+      --white: #FFFFFF;
+      --gray-100: #F7F8FA;
+      --gray-300: #D1D5DB;
+      --gray-600: #4B5563;
+      --gray-900: #111827;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(27, 43, 75, 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--blue-dark);
+      overflow: hidden;
+      padding: 120px 24px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(27,43,75,0.92) 0%, rgba(27,43,75,0.75) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232, 93, 4, 0.18);
+      border: 1px solid rgba(232, 93, 4, 0.4);
+      color: var(--orange-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.78);
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+
+    .hero-social-proof {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--blue-dark);
+      background: var(--blue-mid);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 96px 24px; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--blue-dark);
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 500px;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--gray-100); }
+
+    .how-header { text-align: center; margin-bottom: 64px; }
+    .how-header .section-sub { margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .step {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 32px;
+      border: 1px solid var(--gray-300);
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .step:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-3px); }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--blue-dark);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .step-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .step-connector {
+      display: none;
+    }
+
+    /* ── TRUST ── */
+    .trust { background: var(--white); }
+
+    .trust-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .trust-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .trust-card {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--gray-300);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .trust-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,93,4,0.08); }
+
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .trust-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+
+    .trust-card p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .trust-visual {
+      background: var(--blue-dark);
+      border-radius: 20px;
+      padding: 48px 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .trust-visual .big-stat {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .trust-visual .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 36px;
+    }
+
+    .trust-quote {
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 28px;
+    }
+
+    .trust-quote cite {
+      display: block;
+      margin-top: 12px;
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--orange-light);
+    }
+
+    /* ── SIGNUP FORM ── */
+    .signup {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .signup .section-title { color: white; }
+
+    .signup .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 40px; }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .form-row input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-row input::placeholder { color: rgba(255,255,255,0.45); }
+    .form-row input:focus { border-color: var(--orange); }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(232,93,4,0.15);
+      border: 1px solid rgba(232,93,4,0.4);
+      color: var(--orange-light);
+      padding: 16px 24px;
+      border-radius: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0F1A2E;
+      color: rgba(255,255,255,0.5);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    footer .footer-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-logo span { color: var(--orange); }
+
+    footer p { font-size: 0.875rem; margin-bottom: 4px; }
+
+    footer a {
+      color: var(--orange-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-area {
+      font-size: 0.8rem;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+
+      .trust-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .trust-visual { order: -1; }
+
+      section { padding: 72px 20px; }
+    }
+
+    @media (max-width: 500px) {
+      .hero-cta-group { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Tool<span>Library</span></div>
+    <a href="#signup" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Orange County, CA</div>
+      <h1>Your neighbor's garage,<br><em>now on your phone.</em></h1>
+      <p>Join the private sharing community for Tustin Meadows. Save money, reduce clutter, and borrow the tools you need — right from your own street.</p>
+      <div class="hero-cta-group">
+        <a href="#signup" class="btn-primary">Get Early Access</a>
+        <a href="#how" class="btn-secondary">See How It Works</a>
+      </div>
+      <div class="hero-social-proof">
+        <div class="avatar-stack">
+          <div class="avatar">P</div>
+          <div class="avatar">J</div>
+          <div class="avatar">K</div>
+          <div class="avatar">+</div>
+        </div>
+        Your neighbors are already on the waitlist
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="how-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Three steps, zero awkwardness.</h2>
+        <p class="section-sub">Borrowing from neighbors has never been this easy — or this safe.</p>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">🔧</div>
+          <h3>List a Tool</h3>
+          <p>Share something you own — a ladder, drill, or pressure washer — to unlock access to the entire neighborhood library.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">🗺️</div>
+          <h3>Find What You Need</h3>
+          <p>Browse the neighborhood map to locate that pole saw or tile cutter within walking distance of your front door.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">🤝</div>
+          <h3>Borrow with Confidence</h3>
+          <p>Every exchange is photo-documented and identity-verified — so everyone stays accountable and tools come back in good shape.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & SAFETY -->
+  <section class="trust" id="trust">
+    <div class="container">
+      <div class="trust-inner">
+
+        <div>
+          <div class="section-label">Trust &amp; Safety</div>
+          <h2 class="section-title">Built for neighbors, by neighbors.</h2>
+          <p class="section-sub" style="margin-bottom: 40px;">We've talked to the people on your street. Here's how we put their minds at ease.</p>
+
+          <div class="trust-cards">
+            <div class="trust-card">
+              <div class="trust-icon">🏘️</div>
+              <div>
+                <h4>Verified Neighbors Only</h4>
+                <p>Membership is restricted to residents in our zip code. No strangers, no surprises — just people who live on your street.</p>
+              </div>
+            </div>
+
+            <div class="trust-card">
+              <div class="trust-icon">📋</div>
+              <div>
+                <h4>Liability Protection</h4>
+                <p>All users sign a "Neighbor Agreement" before borrowing anything. Clear expectations from the start.</p>
+              </div>
+            </div>
+
+            <div class="trust-card">
+              <div class="trust-icon">📸</div>
+              <div>
+                <h4>Condition Tracking</h4>
+                <p>Snap a photo during handoff — before and after. Everyone stays accountable without the awkward conversations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-visual">
+          <div class="big-stat">$600+</div>
+          <div class="stat-label">average household tool spend per year</div>
+
+          <div class="trust-quote">
+            "The average American household owns $600 in tools — and uses most of them less than a handful of times. The Tool Library turns that idle gear into community currency."
+            <cite>— The Tool Library Team</cite>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNUP -->
+  <section class="signup" id="signup">
+    <div class="container">
+      <div class="section-label" style="color: var(--orange-light);">Early Access</div>
+      <h2 class="section-title">Be first on your block.</h2>
+      <p class="section-sub">We're launching in the South Coast Metro / Santa Ana area of Orange County. Drop your email and we'll reach out the moment we're live.</p>
+
+      <div class="form-row" id="signupForm">
+        <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" />
+        <button class="btn-primary" onclick="handleSignup()">Get Early Access</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        You're on the list! We'll be in touch soon. 🙌
+      </div>
+      <p class="form-note">No spam. No sales pitch. Just a heads-up when we launch.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Tool<span>Library</span></div>
+    <p>Currently in development for the South Coast Metro / Santa Ana area.</p>
+    <p style="font-size:0.8rem; color:rgba(255,255,255,0.3); margin-top:4px;">Orange County, CA</p>
+    <p><a href="mailto:hello@toollibrary.co">hello@toollibrary.co</a></p>
+    <div class="footer-area">
+      © 2026 Tool Library · Tustin, CA · All rights reserved
+    </div>
+  </footer>
+
+  <script>
+    function handleSignup() {
+      const email = document.getElementById('emailInput').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').style.borderColor = '#E85D04';
+        document.getElementById('emailInput').focus();
+        return;
+      }
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      // TODO: wire to your email provider (Mailchimp, ConvertKit, etc.)
+    }
+
+    document.getElementById('emailInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleSignup();
+      this.style.borderColor = '';
+    });
+  </script>
+
+</body>
+</html>
