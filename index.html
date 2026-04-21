@@ -382,6 +382,88 @@
       color: var(--orange-light);
     }
 
+    /* ── SERVICE AREA ── */
+    .service-area { background: var(--gray-100); }
+
+    .service-area-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .wave2-box {
+      background: var(--blue-dark);
+      border-radius: 16px;
+      padding: 40px 36px;
+      color: white;
+    }
+
+    .wave2-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 10px;
+    }
+
+    .wave2-box h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .wave2-box p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .form-row-small {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .form-row-small input {
+      flex: 1;
+      min-width: 180px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-row-small input::placeholder { color: rgba(255,255,255,0.4); }
+    .form-row-small input:focus { border-color: var(--orange); }
+
+    .btn-wave2 {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .btn-wave2:hover { background: var(--orange-light); }
+
+    @media (max-width: 768px) {
+      .service-area-inner { grid-template-columns: 1fr; }
+    }
+
     /* ── SIGNUP FORM ── */
     .signup {
       background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
@@ -608,6 +690,32 @@
     </div>
   </section>
 
+  <!-- SERVICE AREA -->
+  <section class="service-area">
+    <div class="container">
+      <div class="service-area-inner">
+        <div class="service-area-badge">
+          <div class="section-label">Current Service Area</div>
+          <h2 class="section-title">Zip Code 92704 — Orange County</h2>
+          <p class="section-sub">We're live in South Coast Metro / Santa Ana. If that's you, grab your early access spot now.</p>
+          <a href="#signup" class="btn-primary" style="margin-top:28px; display:inline-block;">Get Early Access</a>
+        </div>
+        <div class="wave2-box">
+          <div class="wave2-label">Not in 92704?</div>
+          <h3>Join the waitlist for Wave 2</h3>
+          <p>We're expanding to more Orange County zip codes soon. Drop your email and we'll let you know when we reach your neighborhood.</p>
+          <div class="form-row-small" id="wave2Form">
+            <input type="email" id="wave2Email" placeholder="your@email.com" autocomplete="email" />
+            <button class="btn-wave2" onclick="handleWave2()">Join Wave 2</button>
+          </div>
+          <div class="form-success" id="wave2Success" style="display:none; margin-top:12px; color:var(--orange-light); font-weight:600; font-size:0.9rem;">
+            You're on the Wave 2 list!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SIGNUP -->
   <section class="signup" id="signup">
     <div class="container">
@@ -666,6 +774,35 @@
 
     document.getElementById('emailInput').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') handleSignup();
+      this.style.borderColor = '';
+    });
+
+    async function handleWave2() {
+      const email = document.getElementById('wave2Email').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('wave2Email').style.borderColor = '#E85D04';
+        document.getElementById('wave2Email').focus();
+        return;
+      }
+      try {
+        const res = await fetch('https://formspree.io/f/xkokvzdl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email, type: 'wave2' })
+        });
+        if (res.ok) {
+          document.getElementById('wave2Form').style.display = 'none';
+          document.getElementById('wave2Success').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        alert('Something went wrong. Please try again.');
+      }
+    }
+
+    document.getElementById('wave2Email').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleWave2();
       this.style.borderColor = '';
     });
   </script>
