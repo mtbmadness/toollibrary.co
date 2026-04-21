@@ -638,16 +638,30 @@
   </footer>
 
   <script>
-    function handleSignup() {
+    async function handleSignup() {
       const email = document.getElementById('emailInput').value.trim();
       if (!email || !email.includes('@')) {
         document.getElementById('emailInput').style.borderColor = '#E85D04';
         document.getElementById('emailInput').focus();
         return;
       }
-      document.getElementById('signupForm').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-      // TODO: wire to your email provider (Mailchimp, ConvertKit, etc.)
+
+      try {
+        const res = await fetch('https://formspree.io/f/xkokvzdl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        if (res.ok) {
+          document.getElementById('signupForm').style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        alert('Something went wrong. Please try again.');
+      }
     }
 
     document.getElementById('emailInput').addEventListener('keydown', function(e) {
