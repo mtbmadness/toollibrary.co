@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tool Library — Borrow Tools from Your Neighbors</title>
+  <title>The Tool Library — Borrow Tools from Your Neighbors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -11,24 +11,24 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange: #E85D04;
-      --orange-light: #F48C06;
-      --blue-dark: #1B2B4B;
-      --blue-mid: #2D4A7A;
-      --blue-light: #EEF3FB;
-      --white: #FFFFFF;
-      --gray-100: #F7F8FA;
-      --gray-300: #D1D5DB;
-      --gray-600: #4B5563;
-      --gray-900: #111827;
+      --orange:       #E8722A;
+      --orange-light: #FF9A4D;
+      --bg:           #12203A;
+      --surface:      #1C2E4A;
+      --input:        #243356;
+      --border:       #2E4268;
+      --text-primary: #FFFFFF;
+      --text-secondary:#B8C5DB;
+      --text-muted:   #7A8CAD;
+      --text-disabled:#4D6080;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      color: var(--gray-900);
-      background: var(--white);
+      color: var(--text-primary);
+      background: var(--bg);
       line-height: 1.6;
     }
 
@@ -41,14 +41,15 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 40px;
-      background: rgba(27, 43, 75, 0.95);
+      background: rgba(18, 32, 58, 0.95);
       backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--text-primary);
       letter-spacing: -0.5px;
     }
 
@@ -56,7 +57,7 @@
 
     .nav-cta {
       background: var(--orange);
-      color: var(--white);
+      color: var(--text-primary);
       border: none;
       padding: 10px 22px;
       border-radius: 8px;
@@ -76,7 +77,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      background: var(--blue-dark);
+      background: var(--bg);
       overflow: hidden;
       padding: 120px 24px 80px;
     }
@@ -85,7 +86,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(27,43,75,0.92) 0%, rgba(27,43,75,0.75) 100%),
+        linear-gradient(135deg, rgba(18,32,58,0.94) 0%, rgba(18,32,58,0.80) 100%),
         url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
     }
 
@@ -97,8 +98,8 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(232, 93, 4, 0.18);
-      border: 1px solid rgba(232, 93, 4, 0.4);
+      background: rgba(232, 114, 42, 0.15);
+      border: 1px solid rgba(232, 114, 42, 0.4);
       color: var(--orange-light);
       font-size: 0.8rem;
       font-weight: 600;
@@ -112,7 +113,7 @@
     .hero h1 {
       font-size: clamp(2.4rem, 6vw, 4rem);
       font-weight: 900;
-      color: var(--white);
+      color: var(--text-primary);
       line-height: 1.1;
       letter-spacing: -1.5px;
       margin-bottom: 24px;
@@ -125,7 +126,7 @@
 
     .hero p {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: rgba(255,255,255,0.78);
+      color: var(--text-secondary);
       max-width: 540px;
       margin: 0 auto 40px;
     }
@@ -139,7 +140,7 @@
 
     .btn-primary {
       background: var(--orange);
-      color: var(--white);
+      color: var(--text-primary);
       padding: 16px 36px;
       border-radius: 10px;
       font-size: 1rem;
@@ -155,19 +156,19 @@
 
     .btn-secondary {
       background: transparent;
-      color: var(--white);
+      color: var(--text-primary);
       padding: 16px 32px;
       border-radius: 10px;
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid var(--border);
       cursor: pointer;
       transition: border-color 0.2s;
       display: inline-block;
     }
 
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+    .btn-secondary:hover { border-color: var(--text-muted); }
 
     .hero-social-proof {
       margin-top: 48px;
@@ -175,27 +176,25 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-muted);
       font-size: 0.85rem;
     }
 
-    .avatar-stack {
-      display: flex;
-    }
+    .avatar-stack { display: flex; }
 
     .avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 2px solid var(--blue-dark);
-      background: var(--blue-mid);
+      border: 2px solid var(--bg);
+      background: var(--surface);
       margin-left: -8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.7rem;
       font-weight: 700;
-      color: white;
+      color: var(--text-primary);
     }
 
     .avatar:first-child { margin-left: 0; }
@@ -215,7 +214,7 @@
     .section-title {
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 800;
-      color: var(--blue-dark);
+      color: var(--text-primary);
       letter-spacing: -0.8px;
       line-height: 1.15;
       margin-bottom: 16px;
@@ -223,14 +222,14 @@
 
     .section-sub {
       font-size: 1.05rem;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       max-width: 500px;
     }
 
     .container { max-width: 1080px; margin: 0 auto; }
 
     /* ── HOW IT WORKS ── */
-    .how { background: var(--gray-100); }
+    .how { background: var(--surface); }
 
     .how-header { text-align: center; margin-bottom: 64px; }
     .how-header .section-sub { margin: 0 auto; }
@@ -242,21 +241,25 @@
     }
 
     .step {
-      background: var(--white);
+      background: var(--bg);
       border-radius: 16px;
       padding: 40px 32px;
-      border: 1px solid var(--gray-300);
+      border: 1px solid var(--border);
       position: relative;
       transition: box-shadow 0.2s, transform 0.2s;
     }
 
-    .step:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-3px); }
+    .step:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      transform: translateY(-3px);
+      border-color: var(--orange);
+    }
 
     .step-number {
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: var(--blue-dark);
+      background: var(--orange);
       color: white;
       font-size: 1.3rem;
       font-weight: 800;
@@ -266,30 +269,23 @@
       margin-bottom: 24px;
     }
 
-    .step-icon {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-    }
+    .step-icon { font-size: 2.4rem; margin-bottom: 16px; }
 
     .step h3 {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--blue-dark);
+      color: var(--text-primary);
       margin-bottom: 10px;
     }
 
     .step p {
       font-size: 0.95rem;
-      color: var(--gray-600);
+      color: var(--text-muted);
       line-height: 1.65;
     }
 
-    .step-connector {
-      display: none;
-    }
-
     /* ── TRUST ── */
-    .trust { background: var(--white); }
+    .trust { background: var(--bg); }
 
     .trust-inner {
       display: grid;
@@ -310,17 +306,21 @@
       align-items: flex-start;
       padding: 24px;
       border-radius: 14px;
-      border: 1px solid var(--gray-300);
+      border: 1px solid var(--border);
+      background: var(--surface);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .trust-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,93,4,0.08); }
+    .trust-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(232,114,42,0.12);
+    }
 
     .trust-icon {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: var(--blue-light);
+      background: var(--input);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -331,18 +331,19 @@
     .trust-card h4 {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--blue-dark);
+      color: var(--text-primary);
       margin-bottom: 4px;
     }
 
     .trust-card p {
       font-size: 0.9rem;
-      color: var(--gray-600);
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
     .trust-visual {
-      background: var(--blue-dark);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 48px 40px;
       color: white;
@@ -360,16 +361,16 @@
 
     .trust-visual .stat-label {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-muted);
       margin-bottom: 36px;
     }
 
     .trust-quote {
       font-size: 1rem;
       font-style: italic;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-secondary);
       line-height: 1.7;
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: 1px solid var(--border);
       padding-top: 28px;
     }
 
@@ -383,7 +384,7 @@
     }
 
     /* ── SERVICE AREA ── */
-    .service-area { background: var(--gray-100); }
+    .service-area { background: var(--surface); }
 
     .service-area-inner {
       display: grid;
@@ -393,7 +394,8 @@
     }
 
     .wave2-box {
-      background: var(--blue-dark);
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: 16px;
       padding: 40px 36px;
       color: white;
@@ -412,125 +414,69 @@
       font-size: 1.4rem;
       font-weight: 800;
       margin-bottom: 12px;
-      color: white;
+      color: var(--text-primary);
     }
 
     .wave2-box p {
       font-size: 0.92rem;
-      color: rgba(255,255,255,0.7);
+      color: var(--text-muted);
       margin-bottom: 24px;
       line-height: 1.65;
     }
-
-    .form-row-small {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .form-row-small input {
-      flex: 1;
-      min-width: 180px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: 2px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
-      color: white;
-      font-size: 0.9rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-row-small input::placeholder { color: rgba(255,255,255,0.4); }
-    .form-row-small input:focus { border-color: var(--orange); }
-
-    .btn-wave2 {
-      background: var(--orange);
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.2s;
-    }
-
-    .btn-wave2:hover { background: var(--orange-light); }
 
     @media (max-width: 768px) {
       .service-area-inner { grid-template-columns: 1fr; }
     }
 
-    /* ── SIGNUP FORM ── */
-    .signup {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    /* ── DOWNLOAD CTA SECTION ── */
+    .download-cta {
+      background: var(--bg);
       color: white;
       text-align: center;
+      border-top: 1px solid var(--border);
     }
 
-    .signup .section-title { color: white; }
+    .download-cta .section-title { color: var(--text-primary); }
+    .download-cta .section-sub { color: var(--text-secondary); margin: 0 auto 40px; }
 
-    .signup .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 40px; }
-
-    .form-row {
-      display: flex;
+    .appstore-btn {
+      display: inline-flex;
+      align-items: center;
       gap: 12px;
-      justify-content: center;
-      max-width: 480px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .form-row input {
-      flex: 1;
-      min-width: 220px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
+      background: var(--orange);
       color: white;
-      font-size: 0.95rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.2s;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .form-row input::placeholder { color: rgba(255,255,255,0.45); }
-    .form-row input:focus { border-color: var(--orange); }
+    .appstore-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
 
-    .form-note {
-      margin-top: 14px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
-    }
+    .appstore-btn .apple-icon { font-size: 1.4rem; }
 
-    .form-success {
-      display: none;
-      background: rgba(232,93,4,0.15);
-      border: 1px solid rgba(232,93,4,0.4);
-      color: var(--orange-light);
-      padding: 16px 24px;
-      border-radius: 10px;
-      max-width: 480px;
-      margin: 0 auto;
-      font-weight: 600;
+    .free-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: #0F1A2E;
-      color: rgba(255,255,255,0.5);
+      background: #0A1628;
+      color: var(--text-muted);
       padding: 40px 24px;
       text-align: center;
+      border-top: 1px solid var(--border);
     }
 
     footer .footer-logo {
       font-size: 1.1rem;
       font-weight: 800;
-      color: white;
+      color: var(--text-primary);
       margin-bottom: 8px;
     }
 
@@ -545,12 +491,20 @@
 
     footer a:hover { text-decoration: underline; }
 
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+
     .footer-area {
       font-size: 0.8rem;
       margin-top: 20px;
       padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.3);
+      border-top: 1px solid var(--border);
+      color: var(--text-disabled);
     }
 
     /* ── RESPONSIVE ── */
@@ -578,18 +532,18 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">Tool<span>Library</span></div>
-    <a href="#signup" class="nav-cta">Get Early Access</a>
+    <a href="https://apps.apple.com/app/id6771199302" target="_blank" class="nav-cta">Download Free</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-badge">Orange County, CA</div>
+      <div class="hero-badge">🎉 Now Live on the App Store</div>
       <h1>Your neighbor's garage,<br><em>now on your phone.</em></h1>
-      <p>Join the private sharing community for South Coast Metro / Santa Ana. Save money, reduce clutter, and borrow the tools you need — right from your own street.</p>
+      <p>The free app for Orange County neighbors to share and borrow tools. Stop buying stuff you'll use once — borrow it from someone down the street.</p>
       <div class="hero-cta-group">
-        <a href="#signup" class="btn-primary">Get Early Access</a>
+        <a href="https://apps.apple.com/app/id6771199302" target="_blank" class="btn-primary">📲 Download on the App Store</a>
         <a href="#how" class="btn-secondary">See How It Works</a>
       </div>
       <div class="hero-social-proof">
@@ -599,7 +553,7 @@
           <div class="avatar">K</div>
           <div class="avatar">+</div>
         </div>
-        Your neighbors are already on the waitlist
+        Free — no subscriptions, no fees
       </div>
     </div>
   </section>
@@ -632,7 +586,7 @@
           <div class="step-number">3</div>
           <div class="step-icon">🤝</div>
           <h3>Borrow with Confidence</h3>
-          <p>Every exchange is photo-documented and identity-verified — so everyone stays accountable and tools come back in good shape.</p>
+          <p>Every exchange is photo-documented — so everyone stays accountable and tools come back in good shape.</p>
         </div>
 
       </div>
@@ -647,22 +601,22 @@
         <div>
           <div class="section-label">Trust &amp; Safety</div>
           <h2 class="section-title">Built for neighbors, by neighbors.</h2>
-          <p class="section-sub" style="margin-bottom: 40px;">We've talked to the people on your street. Here's how we put their minds at ease.</p>
+          <p class="section-sub" style="margin-bottom: 40px;">Here's how we put your mind at ease when lending to someone on your street.</p>
 
           <div class="trust-cards">
             <div class="trust-card">
               <div class="trust-icon">🏘️</div>
               <div>
-                <h4>Verified Neighbors Only</h4>
-                <p>Membership is restricted to residents in our zip code. No strangers, no surprises — just people who live on your street.</p>
+                <h4>Same Zip Code Only</h4>
+                <p>Only people in your zip code can see and borrow your tools. No strangers from across town — just real neighbors.</p>
               </div>
             </div>
 
             <div class="trust-card">
               <div class="trust-icon">📋</div>
               <div>
-                <h4>Liability Protection</h4>
-                <p>All users sign a "Neighbor Agreement" before borrowing anything. Clear expectations from the start.</p>
+                <h4>Neighbor Agreement</h4>
+                <p>Every user signs a Neighbor Agreement before borrowing anything. Clear expectations from the start.</p>
               </div>
             </div>
 
@@ -695,117 +649,49 @@
     <div class="container">
       <div class="service-area-inner">
         <div class="service-area-badge">
-          <div class="section-label">Current Service Area</div>
-          <h2 class="section-title">Zip Code 92704 — Orange County</h2>
-          <p class="section-sub">We're live in South Coast Metro / Santa Ana. If that's you, grab your early access spot now.</p>
-          <a href="#signup" class="btn-primary" style="margin-top:28px; display:inline-block;">Get Early Access</a>
+          <div class="section-label">Where We Are</div>
+          <h2 class="section-title">Starting in Orange County, CA</h2>
+          <p class="section-sub">The Tool Library is live now in the Santa Ana / South Coast Metro area. Download the app, enter your zip code, and start sharing.</p>
+          <a href="https://apps.apple.com/app/id6771199302" target="_blank" class="btn-primary" style="margin-top:28px; display:inline-block;">📲 Download Free</a>
         </div>
         <div class="wave2-box">
-          <div class="wave2-label">Not in 92704?</div>
-          <h3>Join the waitlist for Wave 2</h3>
-          <p>We're expanding to more Orange County zip codes soon. Drop your email and we'll let you know when we reach your neighborhood.</p>
-          <div class="form-row-small" id="wave2Form">
-            <input type="email" id="wave2Email" placeholder="your@email.com" autocomplete="email" />
-            <button class="btn-wave2" onclick="handleWave2()">Join Wave 2</button>
-          </div>
-          <div class="form-success" id="wave2Success" style="display:none; margin-top:12px; color:var(--orange-light); font-weight:600; font-size:0.9rem;">
-            You're on the Wave 2 list!
-          </div>
+          <div class="wave2-label">Coming Soon</div>
+          <h3>Expanding to more zip codes</h3>
+          <p>We're growing to more Orange County neighborhoods soon. Download the app now — when we reach your zip code, you'll be ready to go.</p>
+          <a href="https://apps.apple.com/app/id6771199302" target="_blank" class="btn-primary" style="font-size:0.9rem; padding:12px 22px;">Get the App</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SIGNUP -->
-  <section class="signup" id="signup">
+  <!-- DOWNLOAD CTA -->
+  <section class="download-cta" id="download">
     <div class="container">
-      <div class="section-label" style="color: var(--orange-light);">Early Access</div>
-      <h2 class="section-title">Be first on your block.</h2>
-      <p class="section-sub">We're launching in the South Coast Metro / Santa Ana area of Orange County. Drop your email and we'll reach out the moment we're live.</p>
+      <div class="section-label" style="color: var(--orange-light);">Available Now</div>
+      <h2 class="section-title">Ready to borrow your neighbor's drill?</h2>
+      <p class="section-sub">Download The Tool Library for free on the App Store. No subscription. No fees. Just neighbors helping neighbors.</p>
 
-      <div class="form-row" id="signupForm">
-        <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" />
-        <button class="btn-primary" onclick="handleSignup()">Get Early Access</button>
-      </div>
-      <div class="form-success" id="formSuccess">
-        You're on the list! We'll be in touch soon. 🙌
-      </div>
-      <p class="form-note">No spam. No sales pitch. Just a heads-up when we launch.</p>
+      <a href="https://apps.apple.com/app/id6771199302" target="_blank" class="appstore-btn">
+        <span class="apple-icon">🍎</span>
+        Download on the App Store
+      </a>
+      <div class="free-badge">Free · iPhone · Orange County, CA</div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Tool<span>Library</span></div>
-    <p>Currently in development for the South Coast Metro / Santa Ana area.</p>
-    <p style="font-size:0.8rem; color:rgba(255,255,255,0.3); margin-top:4px;">Orange County, CA</p>
-    <p><a href="mailto:hello@toollibrary.co">hello@toollibrary.co</a></p>
+    <p>Free tool sharing for Orange County neighbors.</p>
+    <div class="footer-links">
+      <a href="/terms">Terms of Use</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="mailto:hello@toollibrary.co">hello@toollibrary.co</a>
+    </div>
     <div class="footer-area">
-      © 2026 Tool Library · South Coast Metro, CA · All rights reserved
+      © 2026 The Tool Library · Orange County, CA · All rights reserved
     </div>
   </footer>
-
-  <script>
-    async function handleSignup() {
-      const email = document.getElementById('emailInput').value.trim();
-      if (!email || !email.includes('@')) {
-        document.getElementById('emailInput').style.borderColor = '#E85D04';
-        document.getElementById('emailInput').focus();
-        return;
-      }
-
-      try {
-        const res = await fetch('https://formspree.io/f/xkokvzdl', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email })
-        });
-
-        if (res.ok) {
-          document.getElementById('signupForm').style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
-        } else {
-          alert('Something went wrong. Please try again.');
-        }
-      } catch {
-        alert('Something went wrong. Please try again.');
-      }
-    }
-
-    document.getElementById('emailInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') handleSignup();
-      this.style.borderColor = '';
-    });
-
-    async function handleWave2() {
-      const email = document.getElementById('wave2Email').value.trim();
-      if (!email || !email.includes('@')) {
-        document.getElementById('wave2Email').style.borderColor = '#E85D04';
-        document.getElementById('wave2Email').focus();
-        return;
-      }
-      try {
-        const res = await fetch('https://formspree.io/f/xkokvzdl', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email, type: 'wave2' })
-        });
-        if (res.ok) {
-          document.getElementById('wave2Form').style.display = 'none';
-          document.getElementById('wave2Success').style.display = 'block';
-        } else {
-          alert('Something went wrong. Please try again.');
-        }
-      } catch {
-        alert('Something went wrong. Please try again.');
-      }
-    }
-
-    document.getElementById('wave2Email').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') handleWave2();
-      this.style.borderColor = '';
-    });
-  </script>
 
 </body>
 </html>
